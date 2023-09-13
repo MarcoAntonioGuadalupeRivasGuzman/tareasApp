@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createTaskRequest } from "../api/tareasApi";
 
 function TareasForm(){
     const [title, setTitle]=useState('');
@@ -13,8 +14,11 @@ function TareasForm(){
     }
 
     const onSubmitForm=(title, descripcion)=>{
-        console.log(title);
-        console.log(descripcion);
+        let tarea ={
+            titulo: title,
+            descrip: descripcion,
+        }
+        createTaskRequest(tarea);
     }
     return(
         <>
