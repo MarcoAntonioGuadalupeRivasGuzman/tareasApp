@@ -1,4 +1,6 @@
-export const createTaskRequest = (tarea)=>{
+import axios from "axios";
+
+export const createTaskRequest = async (tarea)=>{
     console.log(tarea);
 
     const url='http://localhost:3300/tareas';
@@ -9,5 +11,11 @@ export const createTaskRequest = (tarea)=>{
         headers: new Headers()
     }
 
-    fetch(url,fetchData);
+    console.log(fetchData);
+
+    return await fetch(url,fetchData);
+}
+
+export const createTaskTwo = async (tarea)=>{
+   return await axios.post('http://localhost:3300/tareas',tarea);
 }
