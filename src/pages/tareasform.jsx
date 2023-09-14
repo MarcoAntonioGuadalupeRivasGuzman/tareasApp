@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createTaskRequest } from "../api/tareasApi";
+import { createTaskRequest, createTaskTwo } from "../api/tareasApi";
 
 function TareasForm(){
     const [title, setTitle]=useState('');
@@ -13,12 +13,15 @@ function TareasForm(){
         setDescripcion(event.target.value);
     }
 
-    const onSubmitForm=(title, descripcion)=>{
+    const onSubmitForm= async (title, descripcion)=>{
         let tarea ={
-            titulo: title,
-            descrip: descripcion,
+            title: title,
+            description: descripcion,
         }
-        createTaskRequest(tarea);
+        //const respuesta = createTaskRequest(tarea);
+        const respuesta = await createTaskTwo(tarea);
+
+        console.log(respuesta);
     }
     return(
         <>
