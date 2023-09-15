@@ -13,15 +13,25 @@ function TareasForm(){
         setDescripcion(event.target.value);
     }
 
+    const cleanForm=()=>{
+        setTitle('');
+        setDescripcion('');
+    }
+
     const onSubmitForm= async (title, descripcion)=>{
         let tarea ={
             title: title,
             description: descripcion,
         }
         //const respuesta = createTaskRequest(tarea);
+        try{
         const respuesta = await createTaskTwo(tarea);
-
         console.log(respuesta);
+        }
+        catch (error){
+            console.error(error);
+        }
+        cleanForm();
     }
     return(
         <>
