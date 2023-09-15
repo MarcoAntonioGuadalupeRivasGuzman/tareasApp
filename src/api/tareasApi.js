@@ -16,6 +16,10 @@ export const createTaskRequest = async (tarea)=>{
     return await fetch(url,fetchData);
 }
 
+export const getTaskRequest = async ()=>{
+   return await axios.get('http://localhost:3300/tareas')
+}
+
 export const createTaskTwo = async (tarea)=>{
    return await axios.post('http://localhost:3300/tareas',tarea);
 }
