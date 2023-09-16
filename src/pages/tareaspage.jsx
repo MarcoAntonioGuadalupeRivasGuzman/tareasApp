@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getTaskRequest } from "../api/tareasApi";
 import TareaCard from "../components/tareaCard";
+import { useTarea } from "../context/tareasContext";
 
 function TareasPage(){
 
-    const [tareas, setTareas]=useState([]);
-
-    const loadTask= async () =>{
-        const response= await getTaskRequest();
-        console.log(response);
-        setTareas(response.data);
-    }
+    const {tareas, loadTask} = useTarea();
 
     useEffect(()=>{
         loadTask();
