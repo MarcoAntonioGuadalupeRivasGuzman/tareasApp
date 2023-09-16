@@ -1,17 +1,10 @@
 import React from "react";
 import { deleteTaskRequest } from "../api/tareasApi";
+import { useTarea } from "../context/tareasContext";
 
 function TareaCard({ tarea }) {
 
-    const onDelete= async (id)=>{
-        try{
-        const response= await deleteTaskRequest(id);
-        console.log(response);
-        }
-        catch (error){
-            console.error(error);
-        }
-    }
+    const {onDelete} = useTarea();
 
     return (
         <div>
