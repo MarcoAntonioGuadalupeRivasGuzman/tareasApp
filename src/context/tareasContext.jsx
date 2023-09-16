@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { getTaskRequest } from "../api/tareasApi";
+import { deleteTaskRequest, getTaskRequest } from "../api/tareasApi";
 
 export const TareaContext = createContext();
 
@@ -21,8 +21,19 @@ export const TareaContextProvider = ({ children }) => {
         setTareas(response.data);
     }
 
+    const onDelete= async (id)=>{
+        try{
+        const response= await deleteTaskRequest(id);
+        setTareas(tareas.filter(tarea => tarea.id!==id));
+        console.log(response);
+        }
+        catch (error){
+            console.error(error);
+        }
+    }
+
     return (
-        <TareaContext.Provider value={{ tareas, loadTask }}>
+        <TareaContext.Provider value={{ tareas, loadTask , onDelete}}>
             {children}
         </TareaContext.Provider>
     );
