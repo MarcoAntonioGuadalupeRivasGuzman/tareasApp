@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createTaskRequest, createTaskTwo } from "../api/tareasApi";
+import { useParams } from "react-router-dom";
 
 function TareasForm(){
     const [title, setTitle]=useState('');
     const [descripcion, setDescripcion]=useState('');
+    const params = useParams();
+
+    useEffect(()=>{
+        if(!params){
+            
+        }
+    })
 
     const onTitleChange=(event)=>{
         setTitle(event.target.value);
@@ -35,6 +43,7 @@ function TareasForm(){
     }
     return(
         <>
+        <h1>{params.id ? "Editar Tarea":"Nueva Tarea"}</h1>
         <div>
             <form>
                 <label>Title</label>
