@@ -16,7 +16,7 @@ export const createTaskRequest = async (tarea)=>{
     return await fetch(url,fetchData);
 }
 
-export const getTaskRequest = async ()=>{
+export const getTasksRequest = async ()=>{
    return await axios.get('http://localhost:3300/tareas')
 }
 
@@ -26,4 +26,8 @@ export const createTaskTwo = async (tarea)=>{
 
 export const deleteTaskRequest= async (id)=>{
     return await axios.delete(`http://localhost:3300/tareas/${id}`);
+}
+
+export const getTaskRequest = async (id)=>{
+    return await axios.get(`http://localhost:3300/tareas/${id}`)
 }
