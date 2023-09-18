@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<TareasPage />} />
           <Route path='/new' element={<TareasForm />} />
+          <Route path='/edit/:id' element={<TareasForm/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </TareaContextProvider>
